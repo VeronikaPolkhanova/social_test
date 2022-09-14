@@ -1,0 +1,44 @@
+.header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    left: -20%;
+    z-index: 3;
+    width: 20%;
+    background-color: white;
+    height: 100vh;
+    transition: 0.1s ease;
+}
+
+.header-bg {
+    position: fixed;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: rgba(14, 128, 143, 0.4);
+}
+
+.active {
+    left: 0 !important;
+    transition: 0.1s ease;
+}
+
+.header a {
+    text-decoration: none;
+    color: #09b7bd;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.burger {
+    position: absolute;
+    font-size: 40px;
+    cursor: pointer;
+    top: 40px;
+    left: 120%;
+    z-index: 5;
+    color: #09b7bd;
+}

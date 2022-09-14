@@ -1,0 +1,66 @@
+.textarea {
+    resize: none;
+    width: -webkit-fill-available;
+    height: 150px;
+    border: 1px solid #09b7bd;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.textarea:focus-visible {
+    outline: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    text-transform: uppercase;
+    color: #09b7bd;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.button {
+    text-transform: lowercase;
+    font-size: 16px;
+    background-color: white;
+    border: solid 1px #09b7bd;
+    cursor: pointer;
+    padding: 5px;
+    min-width: fit-content;
+    width: 70px;
+    color: #09b7bd;
+}
+
+.button:hover {
+    background-color: #09b7bd;
+    color: white;
+}
+
+.select {
+    text-transform: uppercase;
+    font-size: 16px;
+    border: none;
+    background-color: white;
+    color: #09b7bd;
+    appearance: none;
+    width: auto;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.select option:hover {
+    background-color: #09b7bd;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select:focus-visible {
+    outline: none;
+}

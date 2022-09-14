@@ -1,0 +1,10 @@
+.post-item{
+    list-style: none;
+    border-bottom: solid 1px #09b7bd;
+    padding: 5px;
+    overflow: hidden;
+}
+.post-list{
+    margin: 0;
+    padding: 0;
+}
