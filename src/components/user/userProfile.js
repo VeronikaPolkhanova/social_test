@@ -1,15 +1,16 @@
 import "./user.css";
 
 function UserProfile({ user }) {
+    const { name, age, hobbies, bio, photo } = user;
     return (
         <div className="header-profile">
             <div className="user-avatar">
-                <img src={user.photo} alt="user" />
+                <img src={photo} alt="user" />
             </div>
-            <p>Name: {user.name}</p>
-            <p>Age: {user.age}</p>
-            <p>Hobbies: {user.hobbies}</p>
-            <p>Bio: {user.bio}</p>
+            <p>Name: {name}</p>
+            <p>Age: {age}</p>
+            <p>Hobbies: {hobbies}</p>
+            <p>Bio: {bio}</p>
         </div>
     )
 }

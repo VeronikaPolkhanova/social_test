@@ -13,6 +13,8 @@ const defaultState = {
 }
 
 const reducer = (state = defaultState, action) => {
+    console.log(state.posts);
+    console.log(action.payload);
     switch (action.type) {
         case ADD_NOTE:
             return {
@@ -28,7 +30,12 @@ const reducer = (state = defaultState, action) => {
             return { ...state, posts: state.posts.filter(it => it.id !== action.payload) };
 
         case EDIT_POST:
-            return {}
+            return {
+                ...state, posts: state.posts.map(it => {
+                    if (it.id === action.payload.id) return { ...it, text: action.payload.post.text, topic: action.payload.post.topic }
+                    else return { ...it }
+                })
+            }
         default:
             return state;
     }

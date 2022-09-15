@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import PostList from '../components/postList';
 import './pages.css';
 

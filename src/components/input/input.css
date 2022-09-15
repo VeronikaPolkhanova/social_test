@@ -13,6 +13,7 @@
 }
 
 .form {
+    width: inherit;
     display: flex;
     flex-direction: column;
 }

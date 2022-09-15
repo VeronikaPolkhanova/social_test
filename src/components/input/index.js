@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNoteAction } from '../../store/actions';
 
 import './input.css';
 
-function Input() {
+function Input({ propsDispatch, editedItem, type }) {
+
     const dispatch = useDispatch();
+    
     const [post, setValue] = useState({
-        text: '',
-        topic: '',
+        text: editedItem ? editedItem.text : '',
+        topic: editedItem ? editedItem.topic : 'sport',
     });
     const [isPosted, setIsPosted] = useState("");
 
@@ -18,10 +19,15 @@ function Input() {
             setIsPosted(false);
         }
         else {
-            dispatch(addNoteAction(post));
+            if(type === "edit") {
+                dispatch(propsDispatch({post, id: editedItem.id}));
+            }
+            else if(type === "add") {
+                dispatch(propsDispatch(post));
+            }
             setValue({
                 text: '',
-                topic: '',
+                topic: 'sport',
             });
             setIsPosted(true)
         }
@@ -37,7 +43,7 @@ function Input() {
 
     return (
         <form className="form" onSubmit={handleSubmit}>
-            <label className='label'>New post</label>
+            <label className='label'>Tap post</label>
             <textarea
                 className='textarea'
                 style={{ borderColor: `${post.text.length > 300 ? "red" : "#09b7bd"}` }}
@@ -49,7 +55,7 @@ function Input() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                 <div>
                     <label className='label'>Topic:</label>
-                    <select className='select' onChange={handleChangeSelect}>
+                    <select className='select' value={post.topic} onChange={handleChangeSelect}>
                         <option>sport</option>
                         <option>art</option>
                         <option>music</option>

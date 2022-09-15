@@ -1,37 +1,21 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-
-import moment from "moment";
-
-import { deletePostAction } from "../../store/actions";
+import PostItem from "../postItem";
 
 import "./post.css";
 
 function PostList({ posts }) {
-    const [selected, setSelected] = useState(posts);
-    const dispatch = useDispatch();
-
-    const deletePost = (id) => {
-        dispatch(deletePostAction(id));
-        setSelected(selected.filter((item) => item.id !== id));
-    }
+    
+    const [selected, setSelected] = useState(null);
 
     const handleChangeSelect = (event) => {
         if (event.target.value !== "all") {
-            setSelected(posts.filter((item) => item.topic === event.target.value));
+            setSelected(event.target.value);
         }
-        else setSelected(posts);
+        else setSelected(null);
     }
 
     const postList = <ul className="post-list">
-        {selected.map((item) => <li className="post-item" key={item.id}>
-            <p>{item.text}</p>
-            <p>Topic: {item.topic}</p>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <p>{moment(item.date).format("D MMM YYYY")} {moment(item.date).format("HH:mm")}</p>
-                <button className="button" onClick={() => deletePost(item.id)}>delete</button>
-            </div>
-        </li>)}
+        {posts.filter((item) => item.topic === selected || selected === null).map((item) => <PostItem item={item} key={item.id} />)}
     </ul>
 
     return (
@@ -44,7 +28,7 @@ function PostList({ posts }) {
                 <option>other</option>
                 <option>all</option>
             </select>
-            {selected.length === 0 ? <p className="label">News are empty :(</p> : postList}
+            {posts.length === 0 ? <p className="label">News are empty :(</p> : postList}
         </>
     )
 }
